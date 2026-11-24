@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AWN · PREMIUM PORTFOLIO — SCRIPTS
+   ABDULWEHAB NESRU · PORTFOLIO — SCRIPTS
    ========================================================================== */
 
 (function () {
@@ -82,14 +82,14 @@
   /* ---------- THEME TOGGLE ---------- */
   const themeToggle = document.getElementById('themeToggle');
   const root = document.body;
-  const storedTheme = localStorage.getItem('awn-theme');
+  const storedTheme = localStorage.getItem('abdulwehab-theme');
   if (storedTheme === 'light') root.classList.add('theme-light');
   else if (storedTheme === 'dark') root.classList.add('theme-dark');
 
   themeToggle.addEventListener('click', () => {
     const isLight = root.classList.toggle('theme-light');
     root.classList.toggle('theme-dark', !isLight);
-    localStorage.setItem('awn-theme', isLight ? 'light' : 'dark');
+    localStorage.setItem('abdulwehab-theme', isLight ? 'light' : 'dark');
   });
 
   /* ---------- TYPING ANIMATION ---------- */
@@ -137,7 +137,7 @@
     typingEl.textContent = phrases[0];
   }
 
-  /* ---------- SCROLL REVEAL ---------- */
+  /* ---------- SCROLL REVEAL - FIXED FLICKER ---------- */
   const revealEls = document.querySelectorAll('.reveal');
   if (!prefersReducedMotion && 'IntersectionObserver' in window) {
     const revealObs = new IntersectionObserver(
@@ -145,34 +145,15 @@
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            revealObs.unobserve(entry.target);
+            revealObs.unobserve(entry.target); // Stop observing after reveal
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
     );
     revealEls.forEach((el) => revealObs.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add('visible'));
-  }
-
-  /* ---------- SKILL BARS ---------- */
-  const skillCards = document.querySelectorAll('.skill-card');
-  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-    const skillObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            skillObs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-    skillCards.forEach((c) => skillObs.observe(c));
-  } else {
-    skillCards.forEach((c) => c.classList.add('visible'));
   }
 
   /* ---------- BACK TO TOP ---------- */
@@ -191,17 +172,6 @@
   /* ---------- FOOTER YEAR ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  /* ---------- CV PLACEHOLDER ---------- */
-  const downloadCv = document.getElementById('downloadCv');
-  if (downloadCv) {
-    downloadCv.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert(
-        'CV placeholder — upload your CV file to the assets/ folder, then update the href on the Download CV button in index.html to point to it (e.g. assets/Awn-CV.pdf).'
-      );
-    });
-  }
 
   /* ---------- PORTRAIT FALLBACK GUARD ---------- */
   const portraitImg = document.getElementById('portraitImg');
@@ -311,17 +281,15 @@
     });
   });
 
-  /* ---------- PROJECT IMAGE FALLBACK (belt & suspenders) ---------- */
+  /* ---------- PROJECT IMAGE FALLBACK (Clean & Consistent) ---------- */
   document.querySelectorAll('.project-img').forEach((img) => {
     img.addEventListener('error', function () {
       this.style.display = 'none';
       const parent = this.parentElement;
-      parent.classList.add('media-placeholder');
       if (!parent.querySelector('.media-fallback')) {
-        const title = this.closest('.project-card')?.querySelector('.project-title')?.textContent || 'Project';
         const fallback = document.createElement('div');
         fallback.className = 'media-fallback';
-        fallback.innerHTML = `<span>${title}</span><small>Add a screenshot to assets/</small>`;
+        fallback.innerHTML = `<span>Preview unavailable</span>`;
         parent.appendChild(fallback);
       }
     });
