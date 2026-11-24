@@ -43,7 +43,7 @@
   --shadow-glow: 0 0 0 1px rgba(59, 130, 246, 0.18), 0 20px 60px rgba(59, 130, 246, 0.12);
 }
 
-/* Light theme overrides (optional, toggle-ready) */
+/* Light theme overrides */
 body.theme-light {
   --bg-0: #f4f7ff;
   --bg-1: #eef3ff;
@@ -1447,4 +1447,4 @@ body.theme-light .footer { background: rgba(230, 237, 255, 0.6); }
   .hero-meta, .hero-cta, .hero-socials, .hero-portrait-wrap {
     opacity: 1 !important; animation: none !important;
   }
-  }
+      }
