@@ -3,420 +3,344 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Abdulwehab Nesru — Information Science student at Jimma University. Aspiring IT professional building modern web solutions and digital experiences." />
+  <meta name="description" content="Abdulwehab Nesru — Information Science student at Jimma University. Aspiring IT professional building modern web solutions." />
   <meta name="author" content="Abdulwehab Nesru" />
-  <meta name="theme-color" content="#06080f" />
+  <meta name="theme-color" content="#050505" />
 
   <!-- SEO / Open Graph -->
-  <meta property="og:title" content="Abdulwehab Nesru · Information Science Student & Aspiring IT Professional" />
-  <meta property="og:description" content="Premium portfolio of Abdulwehab Nesru — Information Science student at Jimma University. Explore projects, skills and goals." />
+  <meta property="og:title" content="Abdulwehab Nesru · Information Science & IT Professional" />
+  <meta property="og:description" content="Premium portfolio of Abdulwehab Nesru — Information Science student at Jimma University." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://awn178.github.io/" />
   <meta property="og:image" content="assets/profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <title>Abdulwehab Nesru · Information Science & Aspiring IT Professional</title>
+  <title>Abdulwehab Nesru · Portfolio</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2306080f'/%3E%3Cpath d='M30 75 L50 25 L70 75' stroke='%233b82f6' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='58' r='6' fill='%233b82f6'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23050505'/%3E%3Cpath d='M30 75 L50 25 L70 75' stroke='%23FF6A00' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='58' r='6' fill='%23FF6A00'/%3E%3C/svg%3E" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="theme-dark">
+<body>
 
-  <!-- Animated background layer -->
-  <div class="bg-layers" aria-hidden="true">
-    <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-glow bg-glow-3"></div>
-    <canvas id="particles"></canvas>
+  <!-- Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-logo">AN</div>
+    <div class="preloader-text">ABDULWEHAB NESRU</div>
   </div>
 
-  <!-- ===== NAV ===== -->
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Background Effects -->
+  <div class="bg-canvas" aria-hidden="true">
+    <div class="bg-stars"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <!-- Navigation -->
   <header class="nav-header" id="navHeader">
     <div class="nav-container">
-      <a href="#home" class="nav-logo" aria-label="Home">
-        <span class="logo-bracket">&lt;</span>Abdulwehab<span class="logo-bracket"> /&gt;</span>
+      <a href="#home" class="nav-logo">
+        <span class="logo-mark">AN</span>
+        <span class="logo-text">Abdulwehab</span>
       </a>
 
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <nav class="nav-links" id="navLinks">
         <a href="#home" class="nav-link active">Home</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#education" class="nav-link">Education</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#goals" class="nav-link">Goals</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <span class="nav-indicator" id="navIndicator"></span>
+        <a href="#contact" class="nav-link btn-nav">Contact</a>
       </nav>
 
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
+  <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <p class="hero-greeting">
-          <span class="greeting-line"></span>
-          Hello, I'm
-        </p>
-        <h1 class="hero-name">Abdulwehab Nesru</h1>
-        <h2 class="hero-headline">
-          <span class="typing" id="typing" aria-live="polite"></span><span class="cursor" aria-hidden="true">|</span>
+    <div class="container hero-layout">
+      <div class="hero-content">
+        <div class="hero-badge fade-up">
+          <span class="badge-dot"></span> Available for Opportunities
+        </div>
+        <h1 class="hero-title fade-up">
+          Hi, I'm <br>
+          <span class="text-gradient">Abdulwehab Nesru</span>
+        </h1>
+        <h2 class="hero-headline fade-up">
+          <span class="typing-text" id="typing-text"></span><span class="cursor">|</span>
         </h2>
-        <p class="hero-intro">
-          Fourth-year Information Science student at <strong>Jimma University</strong>, passionate
-          about programming, web technologies, databases, and digital innovation. I build
-          practical solutions and keep growing as a developer — one project at a time.
+        <p class="hero-desc fade-up">
+          I'm an Information Science student at Jimma University with a passion for software development, web technologies, and building practical digital solutions.
         </p>
-        <div class="hero-meta">
-          <span class="meta-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            Jimma University
-          </span>
-          <span class="meta-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            Year IV
-          </span>
+        
+        <div class="hero-actions fade-up">
+          <a href="#projects" class="btn btn-primary magnetic">View My Projects</a>
+          <a href="#contact" class="btn btn-outline magnetic">Contact Me</a>
         </div>
-        <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary">
-            <span>View Projects</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+
+        <div class="hero-socials fade-up">
+          <a href="https://github.com/awn178" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           </a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
-        </div>
-        <div class="hero-socials">
-          <a href="https://github.com/awn178" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            <span>GitHub</span>
-          </a>
-          <a href="https://t.me/awn178" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Telegram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5L2.5 9.5l6 2 2 6 3-4 5 4 3-15z"/><path d="M8.5 11.5L18 5"/></svg>
-            <span>Telegram</span>
+          <a href="https://t.me/awn178" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Telegram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5L2.5 9.5l6 2 2 6 3-4 5 4 3-15z"/><path d="M8.5 11.5L18 5"/></svg>
           </a>
         </div>
       </div>
 
-      <div class="hero-portrait-wrap">
-        <div class="portrait-glow" aria-hidden="true"></div>
-        <div class="portrait-frame">
-          <img
-            src="assets/profile.jpg"
-            alt="Portrait of Abdulwehab Nesru, Information Science student at Jimma University"
-            class="portrait-img"
-            id="portraitImg"
-          />
-          <div class="portrait-fallback" id="portraitFallback" aria-hidden="true">
-            <span>A</span>
+      <div class="hero-visual fade-in">
+        <div class="profile-frame parallax-tilt">
+          <div class="profile-inner">
+            <img src="assets/profile.jpg" alt="Abdulwehab Nesru" class="profile-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-text\'>AN</div>';" />
           </div>
-        </div>
-        <div class="portrait-ring portrait-ring-1" aria-hidden="true"></div>
-        <div class="portrait-ring portrait-ring-2" aria-hidden="true"></div>
-        <div class="floating-badge floating-badge-1">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          <span>Developer</span>
-        </div>
-        <div class="floating-badge floating-badge-2">
-          <span class="dot"></span>
-          <span>Open to work</span>
+          <div class="profile-border-glow"></div>
         </div>
       </div>
     </div>
-
-    <a href="#about" class="scroll-hint" aria-label="Scroll to About">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </a>
   </section>
 
-  <!-- ===== ABOUT ===== -->
+  <!-- About Section -->
   <section id="about" class="section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">01 — About</span>
+        <span class="section-number">01.</span>
         <h2 class="section-title">About Me</h2>
         <div class="section-line"></div>
       </div>
 
       <div class="about-grid">
-        <div class="about-text reveal">
-          <p class="lead">
-            I'm an Information Science student at <strong>Jimma University</strong>, currently in
-            my fourth year, exploring the intersection of programming, data, and the web.
+        <div class="about-text reveal-word">
+          <p>
+            I'm an Information Science student at <strong>Jimma University</strong>, currently in my fourth year, exploring the intersection of programming, data, and the web.
           </p>
           <p>
-            My academic journey has given me a strong foundation in programming principles,
-            web technologies, database systems, networking, and the fundamentals of artificial
-            intelligence. I enjoy learning by building — turning ideas into working software.
+            My academic journey has given me a strong foundation in programming principles, web technologies, database systems, networking, and the fundamentals of artificial intelligence. I enjoy learning by building — turning ideas into working software.
           </p>
           <p>
-            I'm focused on steady, hands-on growth. Rather than claiming expertise I don't yet have, I prefer
-            to show what I'm building and let the work speak for itself.
+            I'm focused on steady, hands-on growth. Rather than claiming expertise I don't yet have, I prefer to show what I'm building and let the work speak for itself.
           </p>
-
-          <div class="about-highlights">
-            <div class="highlight-item">
-              <div class="highlight-icon-wrap">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              </div>
-              <div>
-                <strong>Information Science</strong>
-                <span>Jimma University · Year IV</span>
-              </div>
-            </div>
-            <div class="highlight-item">
-              <div class="highlight-icon-wrap">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              </div>
-              <div>
-                <strong>Aspiring Developer</strong>
-                <span>Web · databases · data fundamentals</span>
-              </div>
-            </div>
-            <div class="highlight-item">
-              <div class="highlight-icon-wrap">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-              </div>
-              <div>
-                <strong>Actively Learning</strong>
-                <span>Building projects, sharpening skills</span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <aside class="about-card reveal">
-          <h3 class="about-card-title">Quick Facts</h3>
-          <ul class="quick-facts">
-            <li><span>University</span><strong>Jimma University</strong></li>
-            <li><span>Department</span><strong>Information Science</strong></li>
-            <li><span>Academic Year</span><strong>Fourth Year (IV)</strong></li>
-          </ul>
-        </aside>
+        <div class="about-card reveal">
+          <div class="about-card-item">
+            <span class="about-card-label">Location</span>
+            <span class="about-card-value">Ethiopia</span>
+          </div>
+          <div class="about-card-item">
+            <span class="about-card-label">University</span>
+            <span class="about-card-value">Jimma University</span>
+          </div>
+          <div class="about-card-item">
+            <span class="about-card-label">Degree</span>
+            <span class="about-card-value">BSc Information Science</span>
+          </div>
+          <div class="about-card-item">
+            <span class="about-card-label">Expected Graduation</span>
+            <span class="about-card-value">2027</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== EDUCATION ===== -->
+  <!-- Education Section -->
   <section id="education" class="section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">02 — Education</span>
+        <span class="section-number">02.</span>
         <h2 class="section-title">Education</h2>
         <div class="section-line"></div>
       </div>
 
-      <div class="timeline reveal">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-card-top">
-              <span class="edu-badge">Current</span>
-              <span class="edu-year">Year IV</span>
-            </div>
+      <div class="education-grid">
+        <div class="edu-card reveal">
+          <div class="edu-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="edu-content">
+            <span class="edu-status">Current</span>
             <h3 class="edu-institution">Jimma University</h3>
-            <p class="edu-program">B.Sc. in Information Science</p>
-            <div class="edu-stats">
-              <div class="edu-stat">
-                <span class="edu-stat-label">Academic Year</span>
-                <span class="edu-stat-value">Fourth Year (IV)</span>
-              </div>
-            </div>
-            <p class="edu-note">
-              Coursework spans programming, web technologies, database systems, networking,
-              data analysis, and artificial intelligence fundamentals.
-            </p>
+            <p class="edu-degree">Bachelor of Science in Information Science</p>
+            <p class="edu-meta">4th Year · Expected Graduation 2027</p>
+          </div>
+        </div>
+
+        <div class="edu-card reveal">
+          <div class="edu-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="edu-content">
+            <h3 class="edu-institution">Adama EXCEL Academy</h3>
+            <p class="edu-degree">Previous Education</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SKILLS ===== -->
+  <!-- Skills Section -->
   <section id="skills" class="section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">03 — Skills</span>
+        <span class="section-number">03.</span>
         <h2 class="section-title">Technical Skills</h2>
         <div class="section-line"></div>
       </div>
 
-      <p class="section-note reveal">
-        Building proficiency across these areas through coursework and personal projects.
-      </p>
-
       <div class="skills-grid">
-        <article class="skill-card reveal">
-          <div class="skill-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <div class="skill-category reveal">
+          <h3 class="skill-category-title">Frontend</h3>
+          <div class="skill-items">
+            <div class="skill-item magnetic">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 20V9"/></svg>
+              <span>HTML5</span>
+            </div>
+            <div class="skill-item magnetic">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 20V9"/></svg>
+              <span>CSS3</span>
+            </div>
+            <div class="skill-item magnetic">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span>JavaScript</span>
+            </div>
           </div>
-          <h3>Programming</h3>
-          <p>Core logic and problem solving with languages like Python, Java, and C++.</p>
-        </article>
+        </div>
 
-        <article class="skill-card reveal">
-          <div class="skill-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 20V9"/></svg>
+        <div class="skill-category reveal">
+          <h3 class="skill-category-title">Backend</h3>
+          <div class="skill-items">
+            <div class="skill-item magnetic">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <span>Node.js</span>
+            </div>
+            <div class="skill-item magnetic">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+              <span>Express.js</span>
+            </div>
+            <div class="skill-item magnetic">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg>
+              <span>PHP</span>
+            </div>
+            <div class="skill-item magnetic">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <span>Python</span>
+            </div>
           </div>
-          <h3>Web Development</h3>
-          <p>Building responsive interfaces with HTML, CSS, and vanilla JavaScript.</p>
-        </article>
+        </div>
 
-        <article class="skill-card reveal">
-          <div class="skill-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        <div class="skill-category reveal">
+          <h3 class="skill-category-title">Database & Data</h3>
+          <div class="skill-items">
+            <div class="skill-item magnetic">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              <span>MySQL</span>
+            </div>
+            <div class="skill-item magnetic">
+              <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span>Data Analysis</span>
+            </div>
           </div>
-          <h3>Databases & SQL</h3>
-          <p>Relational database design, queries, and data modeling fundamentals.</p>
-        </article>
-
-        <article class="skill-card reveal">
-          <div class="skill-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-          </div>
-          <h3>Networking & OS</h3>
-          <p>Fundamentals of networking protocols and operating systems.</p>
-        </article>
-
-        <article class="skill-card reveal">
-          <div class="skill-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          </div>
-          <h3>Data Analysis</h3>
-          <p>Exploring, cleaning, and interpreting data for useful insights.</p>
-        </article>
-
-        <article class="skill-card reveal">
-          <div class="skill-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-          </div>
-          <h3>Artificial Intelligence</h3>
-          <p>Foundational concepts of AI and machine learning.</p>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== PROJECTS ===== -->
+  <!-- Projects Section -->
   <section id="projects" class="section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">04 — Projects</span>
+        <span class="section-number">04.</span>
         <h2 class="section-title">Projects</h2>
         <div class="section-line"></div>
       </div>
 
-      <p class="section-note reveal">
-        A selection of personal projects. Technologies are listed only where verified.
-      </p>
-
       <div class="projects-grid">
         <!-- Project 1 -->
-        <article class="project-card reveal">
+        <div class="project-card reveal">
           <div class="project-media">
-            <img
-              src="assets/efootball-tournament.jpg"
-              alt="Screenshot of eFootball Tournament project"
-              class="project-img"
-            />
+            <img src="assets/efootball-tournament.jpg" alt="eFootball Tournament" class="project-img" onerror="this.style.display='none'; this.parentElement.classList.add('image-error');" />
           </div>
           <div class="project-body">
-            <div class="project-top">
-              <span class="project-index">01</span>
-              <a href="https://github.com/awn178/efootball-tournament" target="_blank" rel="noopener noreferrer" class="project-link-icon" aria-label="eFootball Tournament on GitHub">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
+            <div class="project-header">
+              <h3 class="project-title">eFootball Tournament</h3>
             </div>
-            <h3 class="project-title">eFootball Tournament</h3>
             <p class="project-desc">
-              A project focused on organizing and managing eFootball tournaments.
-              Built as a personal initiative to explore web-based competition management.
+              A project focused on organizing and managing eFootball tournaments. Built as a personal initiative to explore web-based competition management.
             </p>
-            <a href="https://github.com/awn178/efootball-tournament" target="_blank" rel="noopener noreferrer" class="btn btn-project">
-              View on GitHub
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
+            <div class="project-tech">
+              <span class="tech-badge">Web App</span>
+              <span class="tech-badge">UI/UX</span>
+            </div>
+            <a href="https://github.com/awn178/efootball-tournament" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block magnetic">View Source Code</a>
           </div>
-        </article>
+        </div>
 
         <!-- Project 2 -->
-        <article class="project-card reveal">
+        <div class="project-card reveal">
           <div class="project-media">
-            <img
-              src="assets/efootball-marketplace.jpg"
-              alt="Screenshot of eFootball Marketplace project"
-              class="project-img"
-            />
+            <img src="assets/efootball-marketplace.jpg" alt="eFootball Marketplace" class="project-img" onerror="this.style.display='none'; this.parentElement.classList.add('image-error');" />
           </div>
           <div class="project-body">
-            <div class="project-top">
-              <span class="project-index">02</span>
-              <a href="https://github.com/awn178/efootball-marketplace" target="_blank" rel="noopener noreferrer" class="project-link-icon" aria-label="eFootball Marketplace on GitHub">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
+            <div class="project-header">
+              <h3 class="project-title">eFootball Marketplace</h3>
             </div>
-            <h3 class="project-title">eFootball Marketplace</h3>
             <p class="project-desc">
-              A marketplace-style project related to eFootball, exploring buying, selling,
-              or trading concepts within a digital environment.
+              A marketplace-style project related to eFootball, exploring buying, selling, or trading concepts within a digital environment.
             </p>
-            <a href="https://github.com/awn178/efootball-marketplace" target="_blank" rel="noopener noreferrer" class="btn btn-project">
-              View on GitHub
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
+            <div class="project-tech">
+              <span class="tech-badge">Web App</span>
+              <span class="tech-badge">E-commerce</span>
+            </div>
+            <a href="https://github.com/awn178/efootball-marketplace" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block magnetic">View Source Code</a>
           </div>
-        </article>
+        </div>
 
         <!-- Project 3 -->
-        <article class="project-card reveal">
+        <div class="project-card reveal">
           <div class="project-media">
-            <img
-              src="assets/kebele-vital.jpg"
-              alt="Screenshot of Kebele Vital project"
-              class="project-img"
-            />
+            <img src="assets/kebele-vital.jpg" alt="Kebele Vital" class="project-img" onerror="this.style.display='none'; this.parentElement.classList.add('image-error');" />
           </div>
           <div class="project-body">
-            <div class="project-top">
-              <span class="project-index">03</span>
-              <a href="https://github.com/awn178" target="_blank" rel="noopener noreferrer" class="project-link-icon" aria-label="Kebele Vital on GitHub">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </a>
+            <div class="project-header">
+              <h3 class="project-title">Kebele Vital</h3>
             </div>
-            <h3 class="project-title">Kebele Vital</h3>
             <p class="project-desc">
               A web-based platform designed to manage and organize vital community records.
             </p>
-            <a href="https://github.com/awn178" target="_blank" rel="noopener noreferrer" class="btn btn-project">
-              View on GitHub
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
+            <div class="project-tech">
+              <span class="tech-badge">System</span>
+              <span class="tech-badge">Database</span>
+            </div>
+            <a href="https://github.com/awn178" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block magnetic">View Source Code</a>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== GOALS ===== -->
+  <!-- Goals Section -->
   <section id="goals" class="section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">05 — Goals</span>
+        <span class="section-number">05.</span>
         <h2 class="section-title">Career Goals</h2>
         <div class="section-line"></div>
       </div>
@@ -446,11 +370,11 @@
     </div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
+  <!-- Contact Section -->
   <section id="contact" class="section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">06 — Contact</span>
+        <span class="section-number">06.</span>
         <h2 class="section-title">Get in Touch</h2>
         <div class="section-line"></div>
       </div>
@@ -458,48 +382,50 @@
       <div class="contact-grid">
         <div class="contact-info reveal">
           <p class="contact-lead">
-            I'm open to internships, collaborative projects, and learning opportunities.
-            Feel free to reach out — I'd love to connect.
+            I'm open to internships, collaborative projects, and learning opportunities. Feel free to reach out — I'd love to connect.
           </p>
 
-          <ul class="contact-list">
-            <li>
+          <div class="contact-list">
+            <a href="https://github.com/awn178" target="_blank" rel="noopener noreferrer" class="contact-item">
               <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               </div>
               <div>
                 <span class="contact-label">GitHub</span>
-                <a href="https://github.com/awn178" target="_blank" rel="noopener noreferrer" class="contact-value">github.com/awn178</a>
+                <span class="contact-value">github.com/awn178</span>
               </div>
-            </li>
-            <li>
+            </a>
+
+            <a href="mailto:abdulwehabnesru6@gmail.com" class="contact-item">
               <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
-                <span class="contact-label">Gmail</span>
-                <a href="mailto:abdulwehabnesru6@gmail.com" class="contact-value">abdulwehabnesru6@gmail.com</a>
+                <span class="contact-label">Email</span>
+                <span class="contact-value">abdulwehabnesru6@gmail.com</span>
               </div>
-            </li>
-            <li>
+            </a>
+
+            <a href="https://t.me/awn178" target="_blank" rel="noopener noreferrer" class="contact-item">
               <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5L2.5 9.5l6 2 2 6 3-4 5 4 3-15z"/><path d="M8.5 11.5L18 5"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2.5L2.5 9.5l6 2 2 6 3-4 5 4 3-15z"/><path d="M8.5 11.5L18 5"/></svg>
               </div>
               <div>
                 <span class="contact-label">Telegram</span>
-                <a href="https://t.me/awn178" target="_blank" rel="noopener noreferrer" class="contact-value">@awn178</a>
+                <span class="contact-value">@awn178</span>
               </div>
-            </li>
-            <li>
+            </a>
+
+            <a href="https://www.linkedin.com/in/abdulwehab-nesru-a8096a363" target="_blank" rel="noopener noreferrer" class="contact-item">
               <div class="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               </div>
               <div>
                 <span class="contact-label">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/abdulwehab-nesru-a8096a363" target="_blank" rel="noopener noreferrer" class="contact-value">Abdulwehab Nesru</a>
+                <span class="contact-value">Abdulwehab Nesru</span>
               </div>
-            </li>
-          </ul>
+            </a>
+          </div>
         </div>
 
         <div class="contact-card reveal">
@@ -507,10 +433,7 @@
           <p>
             The fastest way to reach me is through Telegram or email. I'm always open to discussing new projects, opportunities, or ideas.
           </p>
-          <a href="https://t.me/awn178" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5L2.5 9.5l6 2 2 6 3-4 5 4 3-15z"/><path d="M8.5 11.5L18 5"/></svg>
-            Message on Telegram
-          </a>
+          <a href="https://t.me/awn178" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full magnetic">Message on Telegram</a>
           <div class="contact-card-divider"></div>
           <p class="contact-card-small">
             Based in Ethiopia · Open to remote and local opportunities.
@@ -520,27 +443,47 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="nav-logo"><span class="logo-bracket">&lt;</span>Abdulwehab<span class="logo-bracket"> /&gt;</span></span>
-        <p>Information Science Student · Aspiring IT Professional</p>
+        <a href="#home" class="nav-logo">
+          <span class="logo-mark">AN</span>
+          <span class="logo-text">Abdulwehab</span>
+        </a>
+        <p class="footer-desc">Information Science Student & Aspiring IT Professional</p>
       </div>
-      <nav class="footer-nav" aria-label="Footer navigation">
+
+      <div class="footer-links">
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-      </nav>
-      <p class="footer-copy">© <span id="year"></span> Abdulwehab Nesru. All rights reserved.</p>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://github.com/awn178" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://t.me/awn178" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2.5L2.5 9.5l6 2 2 6 3-4 5 4 3-15z"/><path d="M8.5 11.5L18 5"/></svg>
+        </a>
+        <a href="mailto:abdulwehabnesru6@gmail.com" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+
+      <p class="footer-copy">Designed & Built with passion by Abdulwehab Nesru. © <span id="year"></span></p>
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-  </button>
-
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  
+  <!-- Custom Script -->
   <script src="script.js"></script>
 </body>
   </html>
