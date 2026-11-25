@@ -5,54 +5,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   
   /* ==========================================
-     1. PRELOADER (AWN ANIMATION & FIX)
+     1. PRELOADER (Bulletproof Timing)
      ========================================== */
   const preloader = document.getElementById("preloader");
   
-  // Inject the new AWN styling dynamically into the preloader
-  preloader.innerHTML = `
-    <div class="awn-logo-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-      <div class="awn-text" style="font-family: 'Orbitron', sans-serif; font-size: 5rem; font-weight: 900; color: #FF6A00; letter-spacing: 0.1em; text-shadow: 0 0 30px rgba(255, 106, 0, 0.6); display: flex; overflow: hidden;">
-        <span class="awn-letter" style="opacity: 0; transform: translateY(50px); display: inline-block;">A</span>
-        <span class="awn-letter" style="opacity: 0; transform: translateY(50px); display: inline-block;">W</span>
-        <span class="awn-letter" style="opacity: 0; transform: translateY(50px); display: inline-block;">N</span>
-      </div>
-      <div class="awn-line" style="height: 2px; width: 0%; background: #FF6A00; box-shadow: 0 0 15px #FF6A00;"></div>
-      <div class="awn-subtitle" style="font-family: 'Fira Code', monospace; font-size: 0.9rem; letter-spacing: 0.4em; color: #a1a1aa; opacity: 0; margin-top: 10px;">
-        ABDULWEHAB NESRU
-      </div>
-    </div>
-  `;
-
-  // Animate the AWN logo
-  const tl = gsap.timeline();
-  
-  tl.to(".awn-letter", {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    stagger: 0.15,
-    ease: "back.out(1.7)"
-  })
-  .to(".awn-line", {
-    width: "120%",
-    duration: 0.6,
-    ease: "power2.out"
-  }, "-=0.4")
-  .to(".awn-subtitle", {
-    opacity: 1,
-    duration: 0.5
-  }, "-=0.2");
-
-  // FORCE the preloader to close after 2.5 seconds
+  // Wait 2.5 seconds (matching the CSS animation), then slide it up
   setTimeout(() => {
     gsap.to(preloader, {
-      y: "-100%", // Slide up to reveal the site
-      duration: 0.9,
+      y: "-100%", 
+      duration: 0.8,
       ease: "power4.inOut",
       onComplete: () => {
         preloader.style.display = "none";
-        initHeroAnimations(); // Trigger hero animations safely
+        // Trigger hero animations only AFTER preloader is gone
+        initHeroAnimations();
       }
     });
   }, 2500); 
