@@ -5,29 +5,57 @@
 document.addEventListener("DOMContentLoaded", () => {
   
   /* ==========================================
-     1. PRELOADER
+     1. PRELOADER (AWN ANIMATION & FIX)
      ========================================== */
   const preloader = document.getElementById("preloader");
-  const preloaderLogo = document.querySelector(".preloader-logo");
-  const preloaderText = document.querySelector(".preloader-text");
+  
+  // Inject the new AWN styling dynamically into the preloader
+  preloader.innerHTML = `
+    <div class="awn-logo-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <div class="awn-text" style="font-family: 'Orbitron', sans-serif; font-size: 5rem; font-weight: 900; color: #FF6A00; letter-spacing: 0.1em; text-shadow: 0 0 30px rgba(255, 106, 0, 0.6); display: flex; overflow: hidden;">
+        <span class="awn-letter" style="opacity: 0; transform: translateY(50px); display: inline-block;">A</span>
+        <span class="awn-letter" style="opacity: 0; transform: translateY(50px); display: inline-block;">W</span>
+        <span class="awn-letter" style="opacity: 0; transform: translateY(50px); display: inline-block;">N</span>
+      </div>
+      <div class="awn-line" style="height: 2px; width: 0%; background: #FF6A00; box-shadow: 0 0 15px #FF6A00;"></div>
+      <div class="awn-subtitle" style="font-family: 'Fira Code', monospace; font-size: 0.9rem; letter-spacing: 0.4em; color: #a1a1aa; opacity: 0; margin-top: 10px;">
+        ABDULWEHAB NESRU
+      </div>
+    </div>
+  `;
 
-  // Animate preloader elements then fade out
-  gsap.to(preloaderLogo, { opacity: 1, duration: 0.8, ease: "power2.out" });
-  gsap.to(preloaderText, { opacity: 1, duration: 0.8, delay: 0.3, ease: "power2.out" });
+  // Animate the AWN logo
+  const tl = gsap.timeline();
+  
+  tl.to(".awn-letter", {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    stagger: 0.15,
+    ease: "back.out(1.7)"
+  })
+  .to(".awn-line", {
+    width: "120%",
+    duration: 0.6,
+    ease: "power2.out"
+  }, "-=0.4")
+  .to(".awn-subtitle", {
+    opacity: 1,
+    duration: 0.5
+  }, "-=0.2");
 
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      gsap.to(preloader, {
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.inOut",
-        onComplete: () => {
-          preloader.style.display = "none";
-          initHeroAnimations(); // Trigger hero animations after preloader
-        }
-      });
-    }, 1500); // Hold preloader for 1.5 seconds
-  });
+  // FORCE the preloader to close after 2.5 seconds
+  setTimeout(() => {
+    gsap.to(preloader, {
+      y: "-100%", // Slide up to reveal the site
+      duration: 0.9,
+      ease: "power4.inOut",
+      onComplete: () => {
+        preloader.style.display = "none";
+        initHeroAnimations(); // Trigger hero animations safely
+      }
+    });
+  }, 2500); 
 
   /* ==========================================
      2. SMOOTH SCROLL (LENIS)
@@ -49,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   requestAnimationFrame(raf);
 
-  // Connect Lenis to GSAP ScrollTrigger
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
@@ -67,14 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const posX = e.clientX;
       const posY = e.clientY;
 
-      // Dot follows instantly
       gsap.to(cursorDot, { x: posX, y: posY, duration: 0 });
-
-      // Ring follows with slight delay
       gsap.to(cursorRing, { x: posX, y: posY, duration: 0.15, ease: "power2.out" });
     });
 
-    // Hover effect on interactive elements
     const interactiveElements = document.querySelectorAll("a, button, .skill-item");
     interactiveElements.forEach((el) => {
       el.addEventListener("mouseenter", () => cursorRing.classList.add("hovered"));
@@ -100,7 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
 
-  // Navbar scroll effect
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
       navHeader.classList.add("scrolled");
@@ -109,13 +131,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Mobile menu toggle
   hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
     hamburger.classList.toggle("active");
   });
 
-  // Close mobile menu on link click
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
@@ -123,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Active link highlighting
   const sections = document.querySelectorAll("section");
   const navItems = document.querySelectorAll(".nav-link");
 
@@ -173,24 +192,24 @@ document.addEventListener("DOMContentLoaded", () => {
     let typeSpeed = isDeleting ? 50 : 100;
 
     if (!isDeleting && charIndex === currentRole.length) {
-      typeSpeed = 2000; // Pause at end of word
+      typeSpeed = 2000;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       roleIndex = (roleIndex + 1) % roles.length;
-      typeSpeed = 500; // Pause before new word
+      typeSpeed = 500;
     }
 
     setTimeout(typeEffect, typeSpeed);
   }
 
   /* ==========================================
-     7. HERO ANIMATIONS (Triggered after preloader)
+     7. HERO ANIMATIONS
      ========================================== */
   function initHeroAnimations() {
-    const tl = gsap.timeline();
+    const heroTl = gsap.timeline();
     
-    tl.to(".fade-up", {
+    heroTl.to(".fade-up", {
       opacity: 1,
       y: 0,
       duration: 0.8,
@@ -201,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
       opacity: 1,
       duration: 1,
       ease: "power3.out",
-      onComplete: typeEffect // Start typing after hero fades in
+      onComplete: typeEffect
     }, "-=0.6");
   }
 
@@ -273,8 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==========================================
      10. SCROLL ANIMATIONS (GSAP ScrollTrigger)
      ========================================== */
-  
-  // Standard Reveal (Cards, Sections)
   const revealElements = document.querySelectorAll(".reveal");
   revealElements.forEach((el) => {
     gsap.fromTo(el,
@@ -293,15 +310,10 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
-  // Word-by-word Reveal (About Text)
   const wordRevealContainers = document.querySelectorAll(".reveal-word");
   wordRevealContainers.forEach((container) => {
-    // Split text into words wrapped in spans
     const textHTML = container.innerHTML;
-    container.innerHTML = textHTML.replace(
-      /([^\s<]+)/g, 
-      "<span>$1</span>"
-    );
+    container.innerHTML = textHTML.replace(/([^\s<]+)/g, "<span>$1</span>");
 
     gsap.fromTo(container.querySelectorAll("span"),
       { opacity: 0.1, filter: "blur(4px)" },
@@ -320,7 +332,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
-  // Parallax Background Glow
   gsap.to(".bg-glow", {
     y: 200,
     ease: "none",
@@ -332,7 +343,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Update ScrollTrigger on resize for Lenis compatibility
   window.addEventListener("resize", () => {
     ScrollTrigger.refresh();
   });
