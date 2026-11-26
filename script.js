@@ -20,6 +20,27 @@
     const backToTop = document.getElementById("backToTop");
     let ticking = false;
 
+    // Play the name reveal once per tab and never for visitors who prefer reduced motion.
+    const introSplash = document.getElementById("introSplash");
+    if (introSplash && !reducedMotion.matches) {
+      let alreadySeen = false;
+      try {
+        alreadySeen = window.sessionStorage.getItem("awn-intro-seen") === "1";
+      } catch (_) {
+        // The intro can still run when browser storage is unavailable.
+      }
+      if (!alreadySeen) {
+        try {
+          window.sessionStorage.setItem("awn-intro-seen", "1");
+        } catch (_) {
+          // Storage is optional; the animation remains short either way.
+        }
+        introSplash.classList.add("is-active");
+        window.setTimeout(() => introSplash.classList.add("is-leaving"), 960);
+        window.setTimeout(() => introSplash.remove(), 1340);
+      }
+    }
+
     // A very short, non-blocking loading cue instead of a full-screen delay.
     if (progress && !reducedMotion.matches) {
       progress.classList.add("is-loading");
