@@ -2,6 +2,87 @@
    ABDULWEHAB NESRU · PORTFOLIO — STYLES
    ========================================================================== */
 
+/* ---------- AWN PRELOADER ANIMATION ---------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #05070d;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.awn-logo {
+  display: flex;
+  gap: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #3b82f6;
+  text-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+}
+
+.awn-letter {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.awn-letter:nth-child(1) { animation-delay: 0.1s; }
+.awn-letter:nth-child(2) { animation-delay: 0.2s; }
+.awn-letter:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes slideUpFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.loader-bar {
+  width: 200px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loader-progress {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 0%;
+  background: #3b82f6;
+  box-shadow: 0 0 10px #3b82f6;
+  animation: loadProgress 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes loadProgress {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+.loader-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.4em;
+  color: #9aa8c2;
+  opacity: 0;
+  animation: fadeIn 1s ease 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
 /* ---------- RESET & VARIABLES ---------- */
 *,
 *::before,
@@ -1323,4 +1404,4 @@ body.theme-light .footer { background: rgba(230, 237, 255, 0.6); }
   .hero-meta, .hero-cta, .hero-socials, .hero-portrait-wrap {
     opacity: 1 !important; animation: none !important;
   }
-   }
+                        }
