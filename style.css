@@ -2,7 +2,7 @@
    ABDULWEHAB NESRU · PORTFOLIO — STYLES
    ========================================================================== */
 
-/* ---------- AWN PRELOADER ANIMATION ---------- */
+/* ---------- ULTIMATE AWN PRELOADER ---------- */
 .preloader {
   position: fixed;
   inset: 0;
@@ -11,18 +11,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .loader-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .awn-logo {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   font-family: 'Orbitron', sans-serif;
   font-size: 5rem;
   font-weight: 900;
@@ -33,25 +34,31 @@
 
 .awn-letter {
   opacity: 0;
-  transform: translateY(20px);
-  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(20px) scale(0.9);
+  animation: awnSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, awnPulse 2s infinite alternate 1s;
 }
 
-.awn-letter:nth-child(1) { animation-delay: 0.1s; }
-.awn-letter:nth-child(2) { animation-delay: 0.2s; }
-.awn-letter:nth-child(3) { animation-delay: 0.3s; }
+.awn-letter:nth-child(1) { animation-delay: 0.1s, 1.1s; }
+.awn-letter:nth-child(2) { animation-delay: 0.2s, 1.2s; }
+.awn-letter:nth-child(3) { animation-delay: 0.3s, 1.3s; }
 
-@keyframes slideUpFade {
-  to { opacity: 1; transform: translateY(0); }
+@keyframes awnSlideUp {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes awnPulse {
+  0% { text-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+  100% { text-shadow: 0 0 40px rgba(59, 130, 246, 1), 0 0 10px rgba(255, 255, 255, 0.5); }
 }
 
 .loader-bar {
-  width: 200px;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 220px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  margin-top: 10px;
 }
 
 .loader-progress {
@@ -60,27 +67,32 @@
   height: 100%;
   width: 0%;
   background: #3b82f6;
-  box-shadow: 0 0 10px #3b82f6;
-  animation: loadProgress 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-shadow: 0 0 15px #3b82f6, 0 0 5px #fff;
+  animation: awnLoadProgress 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes loadProgress {
+@keyframes awnLoadProgress {
   0% { width: 0%; }
-  50% { width: 70%; }
+  40% { width: 30%; }
+  70% { width: 80%; }
   100% { width: 100%; }
 }
 
 .loader-text {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.4em;
+  font-size: 0.75rem;
+  letter-spacing: 0.5em;
   color: #9aa8c2;
   opacity: 0;
-  animation: fadeIn 1s ease 0.5s forwards;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: awnTextReveal 1.5s steps(20) forwards 0.6s;
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
+@keyframes awnTextReveal {
+  0% { opacity: 0; clip-path: inset(0 100% 0 0); }
+  100% { opacity: 1; clip-path: inset(0 0 0 0); }
 }
 
 /* ---------- RESET & VARIABLES ---------- */
@@ -579,7 +591,7 @@ body.theme-light .hero-name {
     0 0 0 1px rgba(59, 130, 246, 0.15),
     0 30px 80px rgba(0, 0, 0, 0.55),
     inset 0 0 40px rgba(59, 130, 246, 0.08);
-  pointer-events: none; /* Removes click/touch interaction */
+  pointer-events: none;
 }
 .portrait-img {
   width: 100%;
@@ -587,7 +599,7 @@ body.theme-light .hero-name {
   object-fit: cover;
   object-position: center;
   display: block;
-  pointer-events: none; /* Removes image jumping */
+  pointer-events: none;
 }
 
 .portrait-fallback {
@@ -1404,4 +1416,4 @@ body.theme-light .footer { background: rgba(230, 237, 255, 0.6); }
   .hero-meta, .hero-cta, .hero-socials, .hero-portrait-wrap {
     opacity: 1 !important; animation: none !important;
   }
-                        }
+   }
