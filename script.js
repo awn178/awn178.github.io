@@ -5,20 +5,22 @@
 document.addEventListener("DOMContentLoaded", () => {
   
   /* ==========================================
-     1. PRELOADER (AWN Animation Timing)
+     1. PRELOADER (Pure CSS Animation + JS Timing)
      ========================================== */
   const preloader = document.getElementById("preloader");
   
-  // Wait 2.5 seconds (matching the CSS animation), then slide it up
+  // Wait 2.5 seconds (matching the CSS animation), then fade/slide out
   setTimeout(() => {
-    gsap.to(preloader, {
-      y: "-100%", 
-      duration: 0.8,
-      ease: "power4.inOut",
-      onComplete: () => {
+    if (preloader) {
+      preloader.style.opacity = "0";
+      preloader.style.visibility = "hidden";
+      preloader.style.transition = "opacity 0.8s ease, visibility 0.8s ease";
+      
+      // Remove from DOM after transition finishes
+      setTimeout(() => {
         preloader.style.display = "none";
-      }
-    });
+      }, 800);
+    }
   }, 2500); 
 
   /* ==========================================
